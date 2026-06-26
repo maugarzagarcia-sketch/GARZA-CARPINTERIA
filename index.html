@@ -185,6 +185,7 @@
       position: absolute; inset: 0;
       background: rgba(15,31,51,0.35);
       opacity: 0; transition: opacity 0.3s;
+      pointer-events: none;
     }
     .proj:hover .proj-overlay { opacity: 1; }
     .proj-name { display: none; }
@@ -801,12 +802,12 @@ function playVideo() {
   let galleryPhotos = [];
 
   function initLightbox() {
-    // Recopilar todas las imágenes del grid de proyectos
     galleryPhotos = Array.from(document.querySelectorAll('.proj img'));
-    galleryPhotos.forEach((img, i) => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', (e) => {
-        e.stopPropagation();
+    const projDivs = Array.from(document.querySelectorAll('.proj'));
+    projDivs.forEach((div, i) => {
+      if (i >= galleryPhotos.length) return;
+      div.style.cursor = 'zoom-in';
+      div.addEventListener('click', () => {
         openLightbox(i);
       });
     });
