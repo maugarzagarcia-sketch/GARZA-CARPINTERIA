@@ -252,7 +252,117 @@
       .cat-hero { padding: 120px 20px 60px; }
       .colores-grid { grid-template-columns: repeat(4, 1fr); }
       footer { padding: 24px 20px; flex-direction: column; }
+      #cart-drawer { width: 100%; }
     }
+
+    /* ── CARRITO ─────────────────────────────── */
+    .cart-btn {
+      position: relative; background: rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.3); color: var(--sand);
+      padding: 8px 16px; cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--sans); font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .cart-btn:hover { background: rgba(201,169,110,0.25); }
+    .cart-badge {
+      background: var(--gold); color: var(--obsidian);
+      font-size: 10px; font-weight: 700;
+      min-width: 18px; height: 18px; border-radius: 9px;
+      display: none; align-items: center; justify-content: center; padding: 0 4px;
+    }
+    .cart-badge.visible { display: inline-flex; }
+
+    #cart-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(8,16,32,0.55); z-index: 200;
+    }
+    #cart-overlay.open { display: block; }
+
+    #cart-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0; width: 380px; max-width: 95vw;
+      background: var(--white); z-index: 201;
+      display: flex; flex-direction: column;
+      transform: translateX(100%); transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+      box-shadow: -8px 0 40px rgba(8,16,32,0.18);
+    }
+    #cart-drawer.open { transform: translateX(0); }
+
+    .cart-header {
+      padding: 22px 24px 18px; background: var(--obsidian);
+      display: flex; align-items: flex-start; justify-content: space-between; flex-shrink: 0;
+    }
+    .cart-header h3 { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--sand); }
+    .cart-header-sub { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-top: 3px; }
+    .cart-close { background: none; border: none; color: var(--gold); font-size: 28px; cursor: pointer; line-height: 1; opacity: 0.7; transition: opacity 0.2s; }
+    .cart-close:hover { opacity: 1; }
+
+    #cart-items { flex: 1; overflow-y: auto; padding: 8px 24px; }
+
+    .cart-empty { text-align: center; padding: 56px 24px; color: rgba(26,26,24,0.35); }
+    .cart-empty svg { margin: 0 auto 16px; display: block; }
+    .cart-empty p { font-size: 13px; line-height: 1.8; }
+
+    .cart-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px 0; border-bottom: 1px solid rgba(26,26,24,0.07);
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-swatch { width: 52px; height: 52px; flex-shrink: 0; border: 1px solid rgba(26,26,24,0.1); }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-family: var(--serif); font-size: 16px; color: var(--obsidian); margin-bottom: 2px; }
+    .cart-item-color { font-size: 11px; color: rgba(26,26,24,0.5); margin-bottom: 4px; }
+    .cart-item-precio { font-size: 14px; font-weight: 500; color: var(--cedar); }
+    .cart-item-remove { background: none; border: none; color: rgba(26,26,24,0.25); cursor: pointer; font-size: 20px; line-height: 1; padding: 2px; transition: color 0.2s; }
+    .cart-item-remove:hover { color: #c0392b; }
+
+    .cart-footer { border-top: 1px solid rgba(26,26,24,0.09); padding: 18px 24px 28px; flex-shrink: 0; background: var(--fog); }
+    .cart-total-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+    .cart-total-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(26,26,24,0.45); }
+    .cart-total-amount { font-family: var(--serif); font-size: 30px; font-weight: 300; color: var(--obsidian); }
+    .cart-note { font-size: 10px; color: rgba(26,26,24,0.4); margin-bottom: 18px; line-height: 1.6; }
+    .btn-checkout {
+      width: 100%; background: #25D366; color: var(--white); border: none;
+      padding: 15px 24px; font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: background 0.2s; margin-bottom: 10px;
+    }
+    .btn-checkout:hover { background: #1ebe5a; }
+    .btn-clear-cart {
+      width: 100%; background: none; border: 1px solid rgba(26,26,24,0.14);
+      color: rgba(26,26,24,0.45); padding: 10px; font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s; font-family: var(--sans);
+    }
+    .btn-clear-cart:hover { border-color: #c0392b; color: #c0392b; }
+
+    .btn-add-cart {
+      width: 100%; background: var(--cedar); color: var(--white); border: none;
+      padding: 16px 24px; font-family: var(--sans); font-size: 12px;
+      letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: background 0.2s; margin-bottom: 10px;
+    }
+    .btn-add-cart:hover { background: var(--obsidian); }
+    .btn-add-cart.added { background: #27ae60; }
+
+    .cart-error {
+      font-size: 11px; color: #c0392b; letter-spacing: 0.05em;
+      text-align: center; margin-bottom: 10px; display: none;
+    }
+    .cart-error.visible { display: block; }
+
+    .btn-wa-secondary {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 12px; background: none;
+      border: 1px solid rgba(26,26,24,0.15); color: rgba(26,26,24,0.6);
+      font-family: var(--sans); font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .btn-wa-secondary:hover { border-color: #25D366; color: #1a9c4e; }
   </style>
 </head>
 <body>
@@ -261,9 +371,16 @@
   <div class="nav-logo">
     <div class="nav-brand">Garza <span>Carpintería</span></div>
   </div>
-  <a class="nav-back" href="index.html">
-    ← Volver al sitio principal
-  </a>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <a class="nav-back" href="index.html">← Volver al sitio</a>
+    <button class="cart-btn" onclick="openCart()" aria-label="Ver carrito">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      Carrito
+      <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -447,12 +564,16 @@
 
     <!-- CTA -->
     <div class="cta-wrap">
-      <a id="btn-whatsapp" href="https://wa.me/527222218633?text=Hola%2C%20me%20interesa%20el%20Cat%C3%A1logo%20Express%20%E2%80%94%20Coffee%20Station%20Modelo%20001.%20A%C3%BAn%20no%20he%20seleccionado%20color." 
-         class="btn-wa" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.099 1.51 5.823L.057 23.428a.75.75 0 00.916.916l5.605-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.027-1.38l-.36-.214-3.728.967.99-3.624-.235-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z" fill="white"/></svg>
-        Ordenar por WhatsApp
+      <p class="cart-error" id="cart-error">Selecciona un color de melamina antes de continuar</p>
+      <button class="btn-add-cart" id="btn-add-cart" onclick="addToCart()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Agregar al carrito
+      </button>
+      <a id="btn-whatsapp" href="https://wa.me/527222218633?text=Hola%2C%20me%20interesa%20el%20Cat%C3%A1logo%20Express%20%E2%80%94%20Coffee%20Station%20Modelo%20001.%20A%C3%BAn%20no%20he%20seleccionado%20color."
+         class="btn-wa-secondary" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.099 1.51 5.823L.057 23.428a.75.75 0 00.916.916l5.605-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.027-1.38l-.36-.214-3.728.967.99-3.624-.235-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+        Ordenar directo por WhatsApp
       </a>
-      <p class="btn-info">Te confirmaremos disponibilidad en menos de 2 horas</p>
     </div>
   </div>
 </div>
@@ -478,6 +599,31 @@
   <a href="index.html" style="font-size:11px;color:rgba(232,224,208,0.3);letter-spacing:0.1em;text-transform:uppercase;">← Volver al sitio</a>
 </footer>
 
+<!-- CARRITO DRAWER -->
+<div id="cart-overlay" onclick="closeCart()"></div>
+<div id="cart-drawer">
+  <div class="cart-header">
+    <div>
+      <h3>Tu pedido</h3>
+      <div class="cart-header-sub">Catálogo Express</div>
+    </div>
+    <button class="cart-close" onclick="closeCart()" aria-label="Cerrar">&times;</button>
+  </div>
+  <div id="cart-items"></div>
+  <div class="cart-footer" id="cart-footer" style="display:none;">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total estimado</span>
+      <span class="cart-total-amount" id="cart-total">$0</span>
+    </div>
+    <p class="cart-note">IVA e instalación incluidos · Zona Metepec y ZMVT · Entrega en 14 días hábiles</p>
+    <button class="btn-checkout" onclick="checkoutWA()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.099 1.51 5.823L.057 23.428a.75.75 0 00.916.916l5.605-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.027-1.38l-.36-.214-3.728.967.99-3.624-.235-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z" fill="white"/></svg>
+      Enviar pedido por WhatsApp
+    </button>
+    <button class="btn-clear-cart" onclick="clearCart()">Vaciar carrito</button>
+  </div>
+</div>
+
 <!-- LIGHTBOX -->
 <div id="lb-overlay" onclick="closeLightbox()">
   <button id="lb-close" onclick="closeLightbox()" aria-label="Cerrar">&times;</button>
@@ -485,6 +631,159 @@
 </div>
 
 <script>
+  /* ── CARRITO ─────────────────────────────────────────── */
+  const PRODUCTOS = {
+    'coffee-station-001': {
+      nombre: 'Coffee Station',
+      modelo: 'Modelo 001',
+      precio: 23500
+    }
+  };
+
+  const SWATCHES = {
+    morel:   'linear-gradient(135deg,#3D2008 0%,#5C3520 40%,#4A2A10 70%,#3A1E08 100%)',
+    avella:  'linear-gradient(135deg,#C4A882 0%,#D4BC96 40%,#BEA07A 70%,#C8AC84 100%)',
+    nougat:  'linear-gradient(135deg,#D4BC96 0%,#E0CCAA 40%,#C8B088 70%,#D8C09A 100%)',
+    cocoa:   'linear-gradient(135deg,#7A5030 0%,#8B6040 40%,#6A4020 70%,#7E5535 100%)',
+    marmara: '#F0EDE8',
+    blanco:  '#F5F5F3',
+    gris:    '#4A4A4A',
+    negro:   '#1A1A18'
+  };
+
+  let cart = JSON.parse(localStorage.getItem('garza-cart') || '[]');
+
+  function saveCart() {
+    localStorage.setItem('garza-cart', JSON.stringify(cart));
+  }
+
+  function openCart() {
+    document.getElementById('cart-overlay').classList.add('open');
+    document.getElementById('cart-drawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    renderCart();
+  }
+
+  function closeCart() {
+    document.getElementById('cart-overlay').classList.remove('open');
+    document.getElementById('cart-drawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function addToCart() {
+    if (!colorSeleccionado) {
+      const err = document.getElementById('cart-error');
+      err.classList.add('visible');
+      setTimeout(() => err.classList.remove('visible'), 3000);
+      return;
+    }
+    document.getElementById('cart-error').classList.remove('visible');
+
+    const existing = cart.find(i => i.productoId === 'coffee-station-001' && i.colorId === colorSeleccionadoId);
+    if (existing) {
+      existing.qty = (existing.qty || 1) + 1;
+    } else {
+      cart.push({
+        productoId: 'coffee-station-001',
+        colorId: colorSeleccionadoId,
+        colorNombre: colorSeleccionado,
+        colorDesc: colorSeleccionadoDesc,
+        qty: 1
+      });
+    }
+    saveCart();
+    updateBadge();
+
+    const btn = document.getElementById('btn-add-cart');
+    btn.classList.add('added');
+    btn.textContent = '✓ Agregado al carrito';
+    setTimeout(() => {
+      btn.classList.remove('added');
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> Agregar al carrito';
+      openCart();
+    }, 900);
+  }
+
+  function removeFromCart(idx) {
+    cart.splice(idx, 1);
+    saveCart();
+    updateBadge();
+    renderCart();
+  }
+
+  function clearCart() {
+    cart = [];
+    saveCart();
+    updateBadge();
+    renderCart();
+  }
+
+  function updateBadge() {
+    const total = cart.reduce((s, i) => s + (i.qty || 1), 0);
+    const badge = document.getElementById('cart-badge');
+    badge.textContent = total;
+    badge.classList.toggle('visible', total > 0);
+  }
+
+  function formatPrecio(n) {
+    return '$' + n.toLocaleString('es-MX');
+  }
+
+  function renderCart() {
+    const container = document.getElementById('cart-items');
+    const footer = document.getElementById('cart-footer');
+
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div class="cart-empty">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <p>Tu carrito está vacío.<br>Elige un color y agrega<br>el Coffee Station.</p>
+        </div>`;
+      footer.style.display = 'none';
+      return;
+    }
+
+    let total = 0;
+    let html = '';
+    cart.forEach((item, idx) => {
+      const prod = PRODUCTOS[item.productoId];
+      const swatch = SWATCHES[item.colorId] || '#888';
+      const subtotal = prod.precio * (item.qty || 1);
+      total += subtotal;
+      html += `
+        <div class="cart-item">
+          <div class="cart-item-swatch" style="background:${swatch};"></div>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${prod.nombre}</div>
+            <div class="cart-item-color">${prod.modelo} · ${item.colorNombre}</div>
+            <div class="cart-item-precio">${formatPrecio(subtotal)}</div>
+          </div>
+          <button class="cart-item-remove" onclick="removeFromCart(${idx})" aria-label="Eliminar">×</button>
+        </div>`;
+    });
+    container.innerHTML = html;
+
+    document.getElementById('cart-total').textContent = formatPrecio(total);
+    footer.style.display = 'block';
+  }
+
+  function checkoutWA() {
+    if (cart.length === 0) return;
+    let lineas = cart.map(item => {
+      const prod = PRODUCTOS[item.productoId];
+      const qty = item.qty || 1;
+      return `• ${prod.nombre} (${prod.modelo}) — Color: ${item.colorNombre} × ${qty} = ${formatPrecio(prod.precio * qty)}`;
+    });
+    const total = cart.reduce((s, i) => s + PRODUCTOS[i.productoId].precio * (i.qty || 1), 0);
+    const msg = `Hola, quiero ordenar del Catálogo Express:\n\n${lineas.join('\n')}\n\nTotal: ${formatPrecio(total)}\n\n¿Pueden confirmarme disponibilidad y fecha de entrega?`;
+    window.open('https://wa.me/527222218633?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  updateBadge();
+  /* ── FIN CARRITO ──────────────────────────────────────── */
+
   function openLightbox(img) {
     document.getElementById('lb-img').src = img.src;
     const overlay = document.getElementById('lb-overlay');
@@ -500,14 +799,16 @@
   });
 
   let colorSeleccionado = null;
+  let colorSeleccionadoId = null;
+  let colorSeleccionadoDesc = null;
 
   function selectColor(id, nombre, desc) {
-    // Quitar active de todos
     document.querySelectorAll('.color-chip').forEach(c => c.classList.remove('active'));
-    // Poner active en el seleccionado
     document.getElementById('chip-' + id).classList.add('active');
-    
+
     colorSeleccionado = nombre;
+    colorSeleccionadoId = id;
+    colorSeleccionadoDesc = desc;
 
     // Mostrar barra de color seleccionado
     document.getElementById('selected-bar').classList.add('visible');
