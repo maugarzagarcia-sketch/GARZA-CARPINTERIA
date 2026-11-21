@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garza — Carpintería & Deco</title>
+  <title>Garza Carpintería — Muebles a la Medida · Metepec</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     /* ── TOKENS ─────────────────────────────────────────── */
@@ -204,50 +204,6 @@
     #deco .section-title { color: var(--sand); }
     #deco .section-title em { color: var(--gold); }
     #deco .section-label { color: var(--gold); opacity: 0.7; }
-    #deco .section-desc { color: rgba(232,224,208,0.5); }
-
-    .deco-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1px; background: rgba(201,169,110,0.12);
-    }
-    .deco-card {
-      background: rgba(26,26,24,0.95); padding: 44px 32px;
-      position: relative; overflow: hidden;
-      transition: background 0.3s;
-    }
-    .deco-card::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 2px; background: linear-gradient(to right, var(--cedar), var(--gold));
-      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
-    }
-    .deco-card:hover { background: rgba(139,74,47,0.12); }
-    .deco-card:hover::after { transform: scaleX(1); }
-    .deco-num { font-family: var(--serif); font-size: 48px; font-weight: 300; color: rgba(201,169,110,0.15); line-height: 1; margin-bottom: 16px; }
-    .deco-icon { font-size: 26px; margin-bottom: 16px; }
-    .deco-name { font-family: var(--serif); font-size: 24px; color: var(--sand); margin-bottom: 10px; }
-    .deco-detail { font-size: 12px; color: rgba(232,224,208,0.45); line-height: 1.8; }
-    .deco-tag {
-      display: inline-block; margin-top: 16px;
-      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--gold); border: 1px solid rgba(201,169,110,0.3);
-      padding: 4px 10px;
-    }
-
-    /* Tendencias strip */
-    .tendencias {
-      margin-top: 56px;
-      border: 1px solid rgba(201,169,110,0.2);
-      padding: 32px 40px;
-    }
-    .tendencias h3 { font-family: var(--serif); font-size: 28px; color: var(--sand); margin-bottom: 20px; }
-    .tendencias-list { display: flex; flex-wrap: wrap; gap: 10px; }
-    .trend-pill {
-      background: rgba(201,169,110,0.1);
-      border: 1px solid rgba(201,169,110,0.2);
-      color: rgba(232,224,208,0.65);
-      padding: 7px 16px; font-size: 12px; letter-spacing: 0.06em;
-    }
-
     /* ── MISIÓN & VISIÓN ────────────────────────────────── */
     #mision-vision {
       background: #0E1A2E;
@@ -483,54 +439,7 @@
       line-height: 1.85;
     }
 
-    /* ── MATERIALES STRIP ────────────────────────────────── */
-    .materiales-wrap { margin-top: 64px; }
-    .materiales-label {
-      font-size: 10px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.7;
-      margin-bottom: 20px;
-    }
-    .materiales-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-    }
-    .material-card {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-    .material-bg {
-      position: absolute;
-      inset: 0;
-      transition: transform 0.5s ease;
-    }
-    .material-card:hover .material-bg { transform: scale(1.06); }
-    .material-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 24px 20px 18px;
-      background: linear-gradient(to top, rgba(15,31,51,0.92) 0%, rgba(15,31,51,0.4) 70%, transparent 100%);
-    }
-    .material-name {
-      font-family: var(--serif);
-      font-size: 19px;
-      color: var(--sand);
-      margin-bottom: 3px;
-    }
-    .material-tag {
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    /* ── SERVICE ICON (activado) ─────────────────────────── */
+        /* ── SERVICE ICON (activado) ─────────────────────────── */
     .service-icon-svg { margin-bottom: 18px; }
 
     /* ── FEATURE BAND ────────────────────────────────────── */
@@ -585,17 +494,13 @@
       .stats-strip { grid-template-columns: repeat(2, 1fr); }
       .proceso-grid { grid-template-columns: 1fr 1fr; }
       .paso:nth-child(2) { border-right: none; }
-      .paso:nth-child(2)::after { display: none; }
-      .materiales-grid { grid-template-columns: repeat(2, 1fr); }
-      .feature-band { grid-template-columns: 1fr; }
+      .paso:nth-child(2)::after { display: none; }      .feature-band { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .stats-strip { grid-template-columns: 1fr 1fr; }
       .proceso-grid { grid-template-columns: 1fr; }
       .paso { border-right: none; border-bottom: 1px solid rgba(26,26,24,0.08); }
-      .paso::after { display: none; }
-      .materiales-grid { grid-template-columns: 1fr 1fr; }
-    }
+      .paso::after { display: none; }    }
 
     /* ── ANIMATIONS ─────────────────────────────────────── */
     @keyframes fadeUp {
@@ -640,7 +545,6 @@
   </div>
   <div class="nav-links">
     <a href="#carpinteria">Carpintería</a>
-    <a href="#deco">Decoración</a>
     <a href="#mision-vision">Nosotros</a>
     <a href="#contacto">Contacto</a>
   </div>
@@ -661,7 +565,7 @@
   </div>
 
   <h1 class="hero-title">Garza</h1>
-  <p class="hero-subtitle">Carpintería & Decoración de Interiores</p>
+  <p class="hero-subtitle">Muebles a la Medida · Metepec</p>
 
   <div class="hero-portals">
     <a class="portal" href="#carpinteria">
@@ -669,12 +573,6 @@
       <div class="portal-title">Carpintería</div>
       <div class="portal-desc">Cocinas, closets, puertas, escaleras y muebles a medida con materiales de primera.</div>
       <div class="portal-arrow">Explorar proyectos →</div>
-    </a>
-    <a class="portal" href="#deco">
-      <div class="portal-icon"><svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M9 22V12h6v10" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
-      <div class="portal-title">Deco & Interiores</div>
-      <div class="portal-desc">Lambrín PVC, iluminación en muebles, paneles PU y los acabados que están marcando los espacios.</div>
-      <div class="portal-arrow">Ver productos →</div>
     </a>
   </div>
 </section>
@@ -1001,93 +899,6 @@ function playVideo() {
 
 <div class="divider"></div>
 
-<!-- DECO & INTERIORES -->
-<section id="deco" class="section section-dark">
-  <p class="section-label">Garza Deco & Interiores</p>
-  <h2 class="section-title">Transforma<br><em>tu espacio</em></h2>
-  <p class="section-desc">
-    Soluciones de decoración e interiorismo con instalación incluida. Productos de calidad, asesoría en sitio y entrega rápida en Metepec y zona metropolitana.
-  </p>
-
-  <div class="deco-grid">
-    <div class="deco-card">
-      <div class="deco-num">01</div>
-      <div class="deco-icon"><svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="2" rx="1" stroke="#C9A96E" stroke-width="1.5" fill="none"/><rect x="2" y="8" width="20" height="2" rx="1" stroke="#C9A96E" stroke-width="1.5" fill="none"/><rect x="2" y="13" width="20" height="2" rx="1" stroke="#C9A96E" stroke-width="1.5" fill="none"/><rect x="2" y="18" width="20" height="2" rx="1" stroke="#C9A96E" stroke-width="1.5" fill="none"/><path d="M11 5v3M11 10v3M11 15v3" stroke="#C9A96E" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-      <div class="deco-name">Lambrín PVC</div>
-      <div class="deco-detail">Paneles machimbrados de PVC para muros, plafones y zoclos. Resistentes a humedad, sin mantenimiento, amplio catálogo de texturas: madera, mármol y colores sólidos.</div>
-      <span class="deco-tag">Anti-humedad</span>
-    </div>
-    <div class="deco-card">
-      <div class="deco-num">02</div>
-      <div class="deco-icon"><svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M12 18v4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M4.93 4.93l2.83 2.83" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M16.24 16.24l2.83 2.83" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M2 12h4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M18 12h4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M4.93 19.07l2.83-2.83" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M16.24 7.76l2.83-2.83" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="3" stroke="#C9A96E" stroke-width="1.5" fill="none"/></svg></div>
-      <div class="deco-name">Iluminación en Muebles</div>
-      <div class="deco-detail">Tiras LED integradas, perfiles de aluminio empotrados, spots bajo cubierta y luz indirecta en cocinas, closets y muebles de TV. Diseño que ilumina y decora al mismo tiempo.</div>
-      <span class="deco-tag">LED integrado</span>
-    </div>
-    <div class="deco-card">
-      <div class="deco-num">03</div>
-      <div class="deco-icon"><svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M12 18v4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M4.93 4.93l2.83 2.83" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M16.24 16.24l2.83 2.83" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M2 12h4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M18 12h4" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M4.93 19.07l2.83-2.83" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M16.24 7.76l2.83-2.83" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></div>
-      <div class="deco-name">Paneles PU</div>
-      <div class="deco-detail">Paneles decorativos de poliuretano que imitan ladrillo, madera, piedra y mármol. Livianos, aislantes y de fácil instalación.</div>
-      <span class="deco-tag">Efecto 3D</span>
-    </div>
-  </div>
-
-  <!-- Materiales y Acabados -->
-  <div class="materiales-wrap">
-    <p class="materiales-label">— Materiales & acabados</p>
-    <div class="materiales-grid">
-      <div class="material-card">
-        <div class="material-bg" style="background:linear-gradient(135deg,#C8B89E 0%,#A8927A 40%,#8B6542 100%);"></div>
-        <div class="material-info">
-          <div class="material-name">Melamina Premium</div>
-          <div class="material-tag">Mate · Brillante · Madera</div>
-        </div>
-      </div>
-      <div class="material-card">
-        <div class="material-bg" style="background:linear-gradient(135deg,#6B4C2A 0%,#8B6542 35%,#A0784A 70%,#7A5535 100%);"></div>
-        <div class="material-info">
-          <div class="material-name">Madera Sólida</div>
-          <div class="material-tag">Pino · Cedro · Encino</div>
-        </div>
-      </div>
-      <div class="material-card">
-        <div class="material-bg" style="background:linear-gradient(135deg,#D8D5D0 0%,#E8E5E0 40%,#C5C0B8 100%);"></div>
-        <div class="material-info">
-          <div class="material-name">MDF Laqueado</div>
-          <div class="material-tag">Liso · Alta dureza · Color</div>
-        </div>
-      </div>
-      <div class="material-card">
-        <div class="material-bg" style="background:linear-gradient(135deg,#2A3A4A 0%,#1E3A5F 50%,#3A5070 100%);"></div>
-        <div class="material-info">
-          <div class="material-name">Acero & Vidrio</div>
-          <div class="material-tag">Herrajes · Cancelería · Espejos</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tendencias -->
-  <div class="tendencias">
-    <h3>Tendencias en interiores 2025</h3>
-    <div class="tendencias-list">
-      <span class="trend-pill">Japandi</span>
-      <span class="trend-pill">Wabi-sabi</span>
-      <span class="trend-pill">Minimalismo cálido</span>
-      <span class="trend-pill">Madera oscura</span>
-      <span class="trend-pill">Verde salvia</span>
-      <span class="trend-pill">Terrazzo</span>
-      <span class="trend-pill">Arcos y nichos</span>
-      <span class="trend-pill">Paneles ranurados</span>
-      <span class="trend-pill">Tono tierra</span>
-      <span class="trend-pill">Glamour discreto</span>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- CONTACTO -->
 <section id="contacto" class="section">
   <div class="contact-grid">
@@ -1145,11 +956,7 @@ function playVideo() {
             <option>Muebles a medida</option>
             <option>Puertas o escaleras</option>
           </optgroup>
-          <optgroup label="Deco & Interiores">
-            <option>Lambrín PVC</option>
-            <option>Iluminación en muebles</option>
-            <option>Paneles PU</option>
-          </optgroup>
+
           <option>Proyecto completo</option>
         </select>
       </div>
@@ -1192,14 +999,13 @@ function playVideo() {
 <footer style="flex-direction:column;gap:0;padding:0;">
   <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding:56px 48px;background:var(--obsidian);border-top:1px solid rgba(201,169,110,0.15);">
     <div>
-      <div class="footer-brand" style="font-size:22px;margin-bottom:14px;">Garza <span>·</span> Carpintería & Deco</div>
-      <p style="font-size:13px;color:rgba(232,224,208,0.45);line-height:1.8;max-width:280px;">Estudio de carpintería y decoración de interiores en Metepec, Estado de México. Calidad, diseño y puntualidad en cada proyecto.</p>
+      <div class="footer-brand" style="font-size:22px;margin-bottom:14px;">Garza <span>·</span> Carpintería</div>
+      <p style="font-size:13px;color:rgba(232,224,208,0.45);line-height:1.8;max-width:280px;">Taller de carpintería a la medida en Metepec, Estado de México. Calidad, diseño y puntualidad en cada proyecto.</p>
     </div>
     <div>
       <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Servicios</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
         <li><a href="#carpinteria" style="font-size:12px;color:rgba(232,224,208,0.5);letter-spacing:0.04em;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(232,224,208,0.5)'">Carpintería a medida</a></li>
-        <li><a href="#deco" style="font-size:12px;color:rgba(232,224,208,0.5);letter-spacing:0.04em;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(232,224,208,0.5)'">Deco & Interiores</a></li>
         <li><a href="catalogo.html" style="font-size:12px;color:rgba(232,224,208,0.5);letter-spacing:0.04em;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(232,224,208,0.5)'">Catálogo Express</a></li>
         <li><a href="#contacto" style="font-size:12px;color:rgba(232,224,208,0.5);letter-spacing:0.04em;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(232,224,208,0.5)'">Cotización</a></li>
       </ul>
@@ -1214,7 +1020,7 @@ function playVideo() {
     </div>
   </div>
   <div style="padding:18px 48px;background:rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-    <div class="footer-meta">© 2025 Garza Carpintería & Deco · Metepec, Estado de México</div>
+    <div class="footer-meta">© 2025 Garza Carpintería · Metepec, Estado de México</div>
     <div style="font-size:10px;letter-spacing:0.1em;color:rgba(232,224,208,0.2);text-transform:uppercase;">Diseño · Fabricación · Instalación</div>
   </div>
 </footer>
