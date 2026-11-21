@@ -248,6 +248,98 @@
       padding: 7px 16px; font-size: 12px; letter-spacing: 0.06em;
     }
 
+    /* ── MISIÓN & VISIÓN ────────────────────────────────── */
+    #mision-vision {
+      background: #0E1A2E;
+      padding: 100px 0 80px;
+    }
+    .mv-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 32px;
+      text-align: center;
+    }
+    .mv-eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 56px;
+      opacity: 0.7;
+    }
+    .mv-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 56px;
+    }
+    .mv-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,169,110,0.15);
+      padding: 48px 40px;
+      text-align: left;
+    }
+    .mv-card:first-child {
+      border-right: none;
+    }
+    .mv-card-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .mv-card-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+      margin-bottom: 20px;
+    }
+    .mv-card p {
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.85;
+      color: rgba(232,224,208,0.75);
+      margin: 0;
+    }
+    .mv-valores {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(201,169,110,0.15);
+      padding-top: 36px;
+    }
+    .mv-valor {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      padding: 0 24px;
+      position: relative;
+      opacity: 0.65;
+    }
+    .mv-valor:not(:last-child)::after {
+      content: '·';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      opacity: 0.4;
+    }
+    @media (max-width: 680px) {
+      .mv-cards { grid-template-columns: 1fr; gap: 2px; }
+      .mv-card:first-child { border-right: 1px solid rgba(201,169,110,0.15); border-bottom: none; }
+      .mv-card { padding: 36px 28px; }
+      .mv-valor { padding: 4px 16px; }
+    }
+
     /* ── CONTACTO ───────────────────────────────────────── */
     #contacto { background: var(--cedar); }
     #contacto .section-label { color: rgba(255,255,255,0.5); }
@@ -352,6 +444,7 @@
   <div class="nav-links">
     <a href="#carpinteria">Carpintería</a>
     <a href="#deco">Decoración</a>
+    <a href="#mision-vision">Nosotros</a>
     <a href="#contacto">Contacto</a>
   </div>
   <a href="#contacto" class="nav-cta">Cotizar</a>
@@ -734,6 +827,32 @@ function playVideo() {
         <textarea placeholder="Medidas aproximadas, estilo que buscas, fecha estimada..."></textarea>
       </div>
       <button class="btn-submit">Enviar solicitud →</button>
+    </div>
+  </div>
+</section>
+
+<!-- MISIÓN & VISIÓN -->
+<section id="mision-vision">
+  <div class="mv-inner">
+    <p class="mv-eyebrow">Quiénes somos</p>
+    <div class="mv-cards">
+      <div class="mv-card">
+        <span class="mv-card-label">Misión</span>
+        <div class="mv-card-divider"></div>
+        <p>Diseñamos, fabricamos e instalamos muebles y soluciones de interiorismo a la medida para familias y arquitectos del Valle de Toluca, con nuestro propio equipo de diseño y maestros carpinteros, precios claros, tiempos cumplidos y un acabado que se nota.</p>
+      </div>
+      <div class="mv-card">
+        <span class="mv-card-label">Visión</span>
+        <div class="mv-card-divider"></div>
+        <p>Ser la carpintería e interiorismo de referencia en el Valle de Toluca: la primera opción cuando se busca algo a la medida, reconocida por su diseño, cumplimiento y confianza.</p>
+      </div>
+    </div>
+    <div class="mv-valores">
+      <span class="mv-valor">Precisión</span>
+      <span class="mv-valor">Transparencia</span>
+      <span class="mv-valor">Cumplimiento</span>
+      <span class="mv-valor">Diseño</span>
+      <span class="mv-valor">Oficio</span>
     </div>
   </div>
 </section>
